@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$defs" : {
+    "subschema": {
+      "type": "object",
+      "required": ["group"],
+      "properties": {
+        "group": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["parentprop"],
+          "properties": {
+            "parentprop": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "unevaluatedProperties": false,
+  "allOf": [
+    {"properties": { "group" : {"type":"object"} } },
+    {"$ref": "#/$defs/subschema"}
+  ],
+  "required": ["childprop"],
+  "properties": {
+    "childprop": {
+      "type": "string"
+    }
+  }
+}
